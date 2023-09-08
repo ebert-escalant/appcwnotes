@@ -1,0 +1,24 @@
+<div class="grid grid-cols-6 w-full max-w-6xl mx-auto h-full px-2 py-8 pt-12">
+	<aside class="col-span-2 hidden sm:block">
+		<app-sidebar />
+	</aside>
+	<section class="col-span-6 sm:col-span-4 pb-16">
+		<router-outlet></router-outlet>
+	</section>
+</div>
+<div class="fixed bottom-0 left-0 right-0 z-40 w-full bg-gray-800 bg-opacity-70 block sm:hidden">
+	<div class="flex p-2 items-center justify-center gap-x-6">
+		<a routerLink='/' class='hover:text-sky-600'>
+			<fa-icon [icon]="faHome" size="lg"></fa-icon>
+		</a>
+		<a routerLink='/notes' class='hover:text-sky-600'>
+			<fa-icon [icon]="faListCheck" size="lg"></fa-icon>
+		</a>
+		<a routerLink='/notes/insert' class='hover:text-sky-600'>
+			<fa-icon [icon]="faNotesMedical" size="lg"></fa-icon>
+		</a>
+		<button type='button' class='hover:text-sky-600'>
+			<fa-icon [icon]="faArrowRightFromBracket" size="lg"></fa-icon>
+		</button>
+	</div>
+</div>

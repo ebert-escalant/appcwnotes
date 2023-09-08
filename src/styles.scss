@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+input, textarea, select {
+	@apply focus:outline-none focus:ring-0 focus:outline-none focus:ring-0 #{!important};
+}
+
+.form-control.ng-invalid.ng-touched, .form-control.ng-invalid.ng-dirty {
+	@apply border-red-500;
+}
+
+.form-control.ng-valid.ng-touched, .form-control.ng-valid.ng-dirty {
+	@apply border-green-500;
+}
+
+@import 'ngx-toastr/toastr';

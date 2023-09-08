@@ -1,0 +1,40 @@
+<nav class='sticky top-8'>
+	<div class="flex space-x-2 items-center mb-6" *ngIf="user">
+		<fa-icon [icon]="faUserCircle" size="2xl"></fa-icon>
+		<span class='text-sky-600'>{{ user.name }}</span>
+	</div>
+	<ul class='flex flex-col gap-y-6 [&>li>a]:flex [&>li>a]:gap-x-2 [&>li>a]:items-center [&>li>a]:px-2 [&>li:hover]:text-sky-600'>
+		<li>
+			<a routerLink="/" routerLinkActive="text-sky-600" [routerLinkActiveOptions]="{exact: true}">
+				<fa-icon [icon]="faHome" size="lg"></fa-icon>
+				<span>Inicio</span>
+			</a>
+		</li>
+		<li *ngIf="user">
+			<a routerLink="/notes" routerLinkActive="text-sky-600" [routerLinkActiveOptions]="{exact: true}">
+				<fa-icon [icon]="faListCheck" size="lg"></fa-icon>
+				<span>Notas</span>
+			</a>
+		</li>
+		<li *ngIf="user">
+			<a routerLink='/notes/insert' routerLinkActive="text-sky-600" [routerLinkActiveOptions]="{exact: true}">
+				<fa-icon [icon]="faNotesMedical" size="lg"></fa-icon>
+				<span>Nueva nota</span>
+			</a>
+		</li>
+	</ul>
+	<div class='mt-12 flex flex-col gap-y-6'>
+		<button class='flex items-center gap-x-2 px-2 hover:text-sky-600' *ngIf="user" (click)="logout()">
+			<fa-icon [icon]="faArrowRightFromBracket" size="lg"></fa-icon>
+			<span>Cerrar sesión</span>
+		</button>
+		<a routerLink='/auth/login' class='flex items-center gap-x-2 px-2 hover:text-sky-600' *ngIf="!user">
+			<fa-icon [icon]="faArrowRightToBracket" size="lg"></fa-icon>
+			<span>Iniciar sesión</span>
+		</a>
+		<a routerLink='/auth/register' class='flex items-center gap-x-2 px-2 hover:text-sky-600' *ngIf="!user">
+			<fa-icon [icon]="faAddressCard" size="lg"></fa-icon>
+			<span>Registrarse</span>
+		</a>
+	</div>
+</nav>

@@ -1,0 +1,87 @@
+{
+  "root": true,
+  "ignorePatterns": [
+    "projects/**/*"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.ts"
+      ],
+      "parserOptions": {
+        "project": [
+          "tsconfig.json",
+          "e2e/tsconfig.json"
+        ],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates"
+      ],
+      "rules": {
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "app",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "app",
+            "style": "kebab-case"
+          }
+        ],
+        "@angular-eslint/use-lifecycle-interface": [
+          "error"
+        ],
+        "@typescript-eslint/semi": [
+          "error",
+          "never"
+        ],
+        "indent": [
+          "error",
+          "tab"
+        ],
+        "no-multiple-empty-lines": [
+          "error",
+          {
+            "max": 1
+          }
+        ],
+        "@typescript-eslint/no-unused-vars": [
+          "warn",
+          {
+            "argsIgnorePattern": "^_"
+          }
+        ],
+        "eol-last": [
+          "error",
+          "never"
+        ]
+      }
+    },
+    {
+      "files": [
+        "*.html"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended",
+        "plugin:@angular-eslint/template/accessibility"
+      ],
+      "rules": {
+        "eol-last": [
+          "error",
+          "never"
+        ],
+        "@angular-eslint/template/label-has-associated-control": "off"
+      }
+    }
+  ]
+}

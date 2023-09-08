@@ -1,0 +1,46 @@
+<div class="w-full">
+	<p class="text-gray-400 font-medium text-md mb-2 text-start">
+		Notas registradas
+	</p>
+	<!-- search -->
+	<div class="relative mb-4">
+		<input
+			type="text"
+			class="form-control block w-full rounded border border-gray-600 bg-gray-700 px-3 py-1.5 focus:border-blue-600"
+			placeholder="Buscar notas"
+			[(ngModel)]="search"
+			(keyup.enter)="searchNotes()"
+			autoComplete='off'
+		/>
+		<fa-icon [icon]="faSearch" class="absolute top-2 right-3 text-gray-400 cursor-pointer" (click)="searchNotes()"></fa-icon>
+	</div>
+	<div class="flex items-center justify-center" *ngIf="isLoading">
+		<div class="animate-spin rounded-full h-32 w-32 border-t-4 border-l-4 border-cyan-900"></div>
+	</div>
+	<div class="flex items-center justify-center" *ngIf="!isLoading && notes.length === 0">
+		<p class="text-gray-400 font-medium text-sm mb-2 text-center sm:text-start">
+			No se encontraron resultados
+		</p>
+	</div>
+	<ul class="flex flex-col gap-y-3" *ngIf="!isLoading">
+		<note-card
+			[note]="note"
+			*ngFor="let note of notes"
+			(deleteNote)="deleteNote($event)"
+			(editNote)="editNote($event)"
+			(favoriteNote)="favoriteNote($event)">
+		</note-card>
+	</ul>
+</div>
+<swal
+  #deleteNoteSwal
+  title="Confirmar operación"
+  text="¿Realmente desea proceder?"
+  icon="question"
+  [confirmButtonText]="'Si, proceder'"
+  [showCancelButton]="true"
+  [cancelButtonText]="'No, cancelar'"
+  [reverseButtons]="true"
+  [focusCancel]="true"
+  (confirm)="confirmDelete()">
+</swal>

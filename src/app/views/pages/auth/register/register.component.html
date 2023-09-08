@@ -1,0 +1,79 @@
+<div class="w-full">
+	<div class="text-center mb-6">
+		<img
+			class="mx-auto w-48 h-auto"
+			src="/assets/images/logo.webp"
+			alt="logo"
+			width="192"
+			height="192"
+			priority
+		/>
+		<h4 class="mt-1 pb-1 text-xl font-semibold">
+			Bienvenido a <span class="bg-gradient-to-r from-red-700 via-orange-400 to-rose-400 bg-clip-text text-transparent">Lotus Notes</span>
+		</h4>
+	</div>
+	<form [formGroup]="form">
+		<div class="mb-4">
+			<label htmlFor="txtEmail" class="text-gray-400 font-medium text-sm mb-2">Correo</label>
+			<input
+				type="text"
+				class="form-control block w-full rounded border border-gray-600 bg-gray-700 px-3 py-1.5 focus:border-blue-600"
+				formControlName="email"
+				id="txtEmail"
+				autoComplete='off'
+			/>
+			<span class="text-red-600 text-xs" *ngIf="email?.invalid && (email?.touched || email?.dirty)">
+				{{ email.errors?.['required'] ? 'El correo es requerido' : '' }}
+				{{ email.errors?.['email'] ? 'El correo no es válido' : '' }}
+			</span>
+		</div>
+		<div class="mb-4">
+			<label htmlFor="txtName" class="text-gray-400 font-medium text-sm mb-2">Nombre</label>
+			<input
+				type="text"
+				class="form-control block w-full rounded border border-gray-600 bg-gray-700 px-3 py-1.5 focus:border-blue-600"
+				formControlName="name"
+				id="txtName"
+				autoComplete='off'
+			/>
+			<span class="text-red-600 text-xs" *ngIf="name?.invalid && (name?.touched || name?.dirty)">
+				Este campo es requerido
+			</span>
+		</div>
+		<div class="mb-4">
+			<label htmlFor="txtPassword" class="text-gray-400 font-medium text-sm mb-2">Contraseña</label>
+			<input
+				type="password"
+				class="form-control block w-full rounded border border-gray-600 bg-gray-700 px-3 py-1.5 focus:border-blue-600"
+				formControlName="password"
+				id="txtPassword"
+				autocomplete="off"
+			/>
+			<span class="text-red-600 text-xs" *ngIf="password?.invalid && (password?.touched || password?.dirty)">
+				{{ password.errors?.['required'] ? 'La contraseña es requerida' : '' }}
+				{{ password.errors?.['minlength'] ? 'La contraseña debe tener al menos 6 caracteres' : '' }}
+			</span>
+		</div>
+		<div class="mb-8 pb-1 pt-1 text-center">
+			<button
+				type="button"
+				class="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white focus:outline-none focus:ring-0"
+				style="background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)"
+				(click)="register()"
+			>
+				Registrarse
+			</button>
+		</div>
+
+		<div class="flex items-center justify-between pb-6">
+			<p class="mb-0 mr-2">¿Ya tienes una cuenta?</p>
+			<button
+				type="button"
+				class="inline-block rounded border-2 border-red-700 px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-red-600 transition duration-150 ease-in-out hover:border-red-600 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-red-600 focus:outline-none focus:ring-0"
+				(click)="goToLogin()"
+			>
+				Iniciar sesión
+			</button>
+		</div>
+	</form>
+</div>

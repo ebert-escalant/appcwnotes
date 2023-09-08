@@ -1,0 +1,35 @@
+<li class="bg-gray-800 rounded shadow border-l-4 border-cyan-800 px-4 py-3" *ngIf="note">
+	<div class="flex items-center">
+		<div class="flex-1">
+			<h3 class="font-medium text-cyan-300">{{ note.title }}</h3>
+			<p class="text-sm text-gray-400">{{ note.description.length > 50 ? note.description.substring(0, 50) + '...' : note.description }}</p>
+			<span class="text-xs text-emerald-300">
+				<fa-icon [icon]="faCalendarDays"></fa-icon>
+				{{ note.createdAt.substring(0, 10) }}
+			</span>
+		</div>
+		<div class="flex items-center justify-end gap-x-2">
+			<span class="py-1 text-xs leading-none border border-purple-900 uppercase bg-opacity-50 font-normal px-2 rounded-lg bg-purple-800">{{ note.language }}</span>
+			<fa-icon [icon]="faStar" class="cursor-pointer" [ngClass]="{'text-yellow-600': note.favorite, 'text-gray-600': !note.favorite}" (click)="favorite(note.id)"></fa-icon>
+			<div class="relative">
+				<button type="button" class="px-1" (click)="showTools = !showTools">
+					<fa-icon [icon]="faEllipsisV" class="text-gray-400"></fa-icon>
+				</button>
+				<ul class="absolute bottom-5 right-2 w-24 bg-gray-700 rounded overflow-hidden" [ngClass]="{'block': showTools, 'hidden': !showTools}">
+					<li>
+						<button type="button" class="cursor-pointer px-2 py-1 hover:bg-gray-600 w-full text-left" (click)="edit(note.id)">
+							<fa-icon [icon]="faEdit" class="mr-1" size="xs"></fa-icon>
+							Editar
+						</button>
+					</li>
+					<li>
+						<button type="button" class="cursor-pointer px-2 py-1 hover:bg-gray-600 w-full text-left" (click)="delete(note.id)">
+							<fa-icon [icon]="faTrashAlt" class="mr-1" size="xs"></fa-icon>
+							Eliminar
+						</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</li>

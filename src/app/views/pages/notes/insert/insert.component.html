@@ -1,0 +1,49 @@
+<form [formGroup]="form" class="w-full">
+	<div class="mb-4">
+		<label htmlFor="txtTitle" class="text-gray-400 font-medium text-sm mb-2">Titulo</label>
+		<input
+			type="text"
+			class="form-control block w-full rounded border border-gray-600 bg-gray-700 px-3 py-1.5 focus:border-blue-600"
+			formControlName="title"
+			id="txtTitle"
+			autoComplete='off'
+		/>
+	</div>
+	<div class="mb-4">
+		<label htmlFor="txtDescription" class="text-gray-400 font-medium text-sm mb-2">Descripcíon</label>
+		<textarea
+			class="form-control block w-full rounded border border-gray-600 bg-gray-700 px-3 py-1.5 focus:border-blue-600 scrollbar-thumb-slate-500 scrollbar-thin scrollbar-track-slate-600"
+			formControlName="description"
+			id="txtDescription"
+			autoComplete='off'
+		></textarea>
+	</div>
+	<div class="mb-4">
+		<label htmlFor="txtLanguage" class="text-gray-400 font-medium text-sm mb-2">Lenguaje</label>
+		<input
+			type="text"
+			class="form-control block w-full rounded border border-gray-600 bg-gray-700 px-3 py-1.5 focus:border-blue-600"
+			formControlName="language"
+			id="txtLanguage"
+			autoComplete='off'
+		/>
+	</div>
+	<div class="mb-4">
+		<label htmlFor="txtCode" class="text-gray-400 font-medium text-sm mb-2">Código</label>
+		<textarea
+			class="form-control block w-full rounded border border-gray-600 bg-gray-700 px-3 py-1.5 focus:border-blue-600 scrollbar-thumb-slate-500 scrollbar-thin scrollbar-track-slate-600"
+			formControlName="code"
+			id="txtCode"
+			autoComplete='off'
+		></textarea>
+	</div>
+	<div class="flex justify-start">
+		<button
+			type="button"
+			class="px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white rounded"
+			(click)="insert()"
+		>
+			Guardar datos ingresados
+		</button>
+	</div>
+</form>
