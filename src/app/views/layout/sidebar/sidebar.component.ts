@@ -1,4 +1,5 @@
 import { Component, DoCheck, OnInit } from '@angular/core'
+import { Router } from '@angular/router'
 import {
 	faUserCircle,
 	faHome,
@@ -26,7 +27,7 @@ export class SidebarComponent implements OnInit, DoCheck {
 	faArrowRightToBracket = faArrowRightToBracket
 	faAddressCard = faAddressCard
 
-	constructor(private authService: AuthService) { }
+	constructor(private authService: AuthService, private router: Router) { }
 
 	ngOnInit() {
 		this.user = this.authService.getUser()
@@ -38,5 +39,7 @@ export class SidebarComponent implements OnInit, DoCheck {
 
 	logout() {
 		this.authService.removeData()
+
+		this.router.navigate(['/'])
 	}
 }
