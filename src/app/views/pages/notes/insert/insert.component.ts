@@ -1,24 +1,28 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { ToastrService } from 'ngx-toastr'
 import { NoteService } from 'src/app/api/note/note.service'
 import { NoteBody } from 'src/app/models/note/note'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { LoadingService } from 'src/app/services/loading.service'
+import { Language } from 'src/app/models/language/language'
+import { LanguageService } from 'src/app/api/language/language.service'
 
 @Component({
 	selector: 'app-insert',
 	templateUrl: './insert.component.html',
 	styleUrls: ['./insert.component.scss']
 })
-export class InsertComponent {
+export class InsertComponent implements OnInit {
 	form!: FormGroup
 	faArrowLeft = faArrowLeft
+	languages: Language[] = []
 
 	constructor(
 		private formBuilder: FormBuilder,
 		private noteService: NoteService,
 		private toastr: ToastrService,
+		private languageService: LanguageService,
 		private loadingService: LoadingService
 	) {
 		this.form = this.formBuilder.group({
@@ -26,6 +30,12 @@ export class InsertComponent {
 			description: ['', [Validators.required]],
 			language: '',
 			code: ''
+		})
+	}
+
+	ngOnInit() {
+		this.languageService.getLanguages().then((response) => {
+			this.languages = response
 		})
 	}
 

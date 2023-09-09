@@ -2,6 +2,26 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 @import 'highlight.js/styles/tokyo-night-dark.css';
+@import '@ng-select/ng-select/themes/default.theme.css';
+
+.ng-select-container {
+	@apply text-gray-300 w-full rounded border border-gray-600 bg-gray-700 px-3 py-1.5 focus:border-blue-600 #{!important};
+}
+
+.ng-dropdown-panel {
+	@apply border border-gray-600 #{!important};
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items {
+	@apply scrollbar-thumb-slate-500 scrollbar-thin scrollbar-track-slate-600 #{!important};
+ }
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+	@apply bg-gray-700 text-gray-100 #{!important};
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked {
+	@apply bg-gray-600 #{!important};
+}
 
 input, textarea, select {
 	@apply focus:outline-none focus:ring-0 focus:outline-none focus:ring-0 #{!important};

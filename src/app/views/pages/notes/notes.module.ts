@@ -11,6 +11,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { ShowComponent } from './show/show.component'
 import { HighlightModule } from 'ngx-highlightjs'
 import { ClipboardModule } from '@angular/cdk/clipboard'
+import { NgSelectModule } from '@ng-select/ng-select'
 
 const routes: Routes = [
 	{
@@ -44,6 +45,7 @@ const routes: Routes = [
 		ReactiveFormsModule,
 		FontAwesomeModule,
 		SweetAlert2Module,
+		NgSelectModule,
 		RouterModule.forChild(routes),
 		NoteCardComponent,
 		HighlightModule,

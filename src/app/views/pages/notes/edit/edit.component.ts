@@ -6,6 +6,8 @@ import { NoteService } from 'src/app/api/note/note.service'
 import { Note, NoteBody } from 'src/app/models/note/note'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { LoadingService } from 'src/app/services/loading.service'
+import { LanguageService } from 'src/app/api/language/language.service'
+import { Language } from 'src/app/models/language/language'
 
 @Component({
 	selector: 'app-edit',
@@ -17,6 +19,7 @@ export class EditComponent implements OnInit{
 	isLoading = true
 	idNote!: string
 	note!: Note
+	languages: Language[] = []
 	faArrowLeft = faArrowLeft
 
 	constructor(
@@ -24,6 +27,7 @@ export class EditComponent implements OnInit{
 		private noteService: NoteService,
 		private toastr: ToastrService,
 		private route: ActivatedRoute,
+		private languageService: LanguageService,
 		private loadingService: LoadingService
 	) {
 		this.form = this.formBuilder.group({
@@ -36,6 +40,10 @@ export class EditComponent implements OnInit{
 
 	ngOnInit() {
 		this.idNote = this.route.snapshot.paramMap.get('id') || ''
+
+		this.languageService.getLanguages().then((response) => {
+			this.languages = response
+		})
 
 		this.getNote()
 	}

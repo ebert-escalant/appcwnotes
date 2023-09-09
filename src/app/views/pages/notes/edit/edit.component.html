@@ -17,28 +17,39 @@
 	<div class="mb-4">
 		<label htmlFor="txtDescription" class="text-gray-400 font-medium text-sm mb-2">Descripcíon</label>
 		<textarea
-			class="form-control block w-full rounded border border-gray-600 bg-gray-700 px-3 py-1.5 focus:border-blue-600 scrollbar-thumb-slate-500 scrollbar-thin scrollbar-track-slate-600"
+			class="form-control block w-full rounded border border-gray-600 bg-gray-700 px-3 py-1.5 resize-none focus:border-blue-600 scrollbar-thumb-slate-500 scrollbar-thin scrollbar-track-slate-600"
 			formControlName="description"
 			id="txtDescription"
+			rows="3"
 			autoComplete='off'
 		></textarea>
 	</div>
 	<div class="mb-4">
 		<label htmlFor="txtLanguage" class="text-gray-400 font-medium text-sm mb-2">Lenguaje</label>
-		<input
-			type="text"
-			class="form-control block w-full rounded border border-gray-600 bg-gray-700 px-3 py-1.5 focus:border-blue-600"
+		<ng-select
+			[clearable]="true"
+			[searchable]="true"
+			[closeOnSelect]="true"
+			labelForId="txtLanguage"
+			notFoundText="No se encontraron resultados"
 			formControlName="language"
-			id="txtLanguage"
-			autoComplete='off'
-		/>
+			class="w-full"
+		>
+			<ng-option
+				*ngFor="let language of languages"
+				[value]="language.value"
+			>
+				{{ language.label }}
+			</ng-option>
+		</ng-select>
 	</div>
 	<div class="mb-4">
 		<label htmlFor="txtCode" class="text-gray-400 font-medium text-sm mb-2">Código</label>
 		<textarea
-			class="form-control block w-full rounded border border-gray-600 bg-gray-700 px-3 py-1.5 focus:border-blue-600 scrollbar-thumb-slate-500 scrollbar-thin scrollbar-track-slate-600"
+			class="form-control block w-full rounded border border-gray-600 bg-gray-700 px-3 py-1.5 resize-none focus:border-blue-600 scrollbar-thumb-slate-500 scrollbar-thin scrollbar-track-slate-600"
 			formControlName="code"
 			id="txtCode"
+			rows="10"
 			autoComplete='off'
 		></textarea>
 	</div>
