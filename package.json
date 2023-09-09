@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --aot --configuration production",
+    "build": "ng build --aot --configuration production --base-href /hrms",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint"
