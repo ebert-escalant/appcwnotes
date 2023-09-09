@@ -12,7 +12,7 @@
 			<span class="py-1 text-xs leading-none border border-purple-900 uppercase bg-opacity-50 font-normal px-2 rounded-lg bg-purple-800">{{ note.language }}</span>
 			<fa-icon [icon]="faStar" class="cursor-pointer" [ngClass]="{'text-yellow-600': note.favorite, 'text-gray-600': !note.favorite}" (click)="favorite(note.id)"></fa-icon>
 			<div class="relative">
-				<button type="button" class="px-1" (click)="showTools = !showTools">
+				<button type="button" class="px-1" (click)="this.showTools = !this.showTools">
 					<fa-icon [icon]="faEllipsisV" class="text-gray-400"></fa-icon>
 				</button>
 				<ul class="absolute bottom-5 right-2 w-24 bg-gray-700 rounded overflow-hidden" [ngClass]="{'block': showTools, 'hidden': !showTools}">

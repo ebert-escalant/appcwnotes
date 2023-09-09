@@ -15,7 +15,7 @@
 		<fa-icon [icon]="faSearch" class="absolute top-2 right-3 text-gray-400 cursor-pointer" (click)="searchNotes()"></fa-icon>
 	</div>
 	<div class="flex items-center justify-center" *ngIf="isLoading">
-		<div class="animate-spin rounded-full h-32 w-32 border-t-4 border-l-4 border-cyan-900"></div>
+		Cargando notas...
 	</div>
 	<div class="flex items-center justify-center" *ngIf="!isLoading && notes.length === 0">
 		<p class="text-gray-400 font-medium text-sm mb-2 text-center sm:text-start">

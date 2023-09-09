@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr'
 import { NoteService } from 'src/app/api/note/note.service'
 import { NoteBody } from 'src/app/models/note/note'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { LoadingService } from 'src/app/services/loading.service'
 
 @Component({
 	selector: 'app-insert',
@@ -12,13 +13,13 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 })
 export class InsertComponent {
 	form!: FormGroup
-	isLoading = false
 	faArrowLeft = faArrowLeft
 
 	constructor(
 		private formBuilder: FormBuilder,
 		private noteService: NoteService,
-		private toastr: ToastrService
+		private toastr: ToastrService,
+		private loadingService: LoadingService
 	) {
 		this.form = this.formBuilder.group({
 			title: ['', [Validators.required, Validators.maxLength(255)]],
@@ -39,7 +40,7 @@ export class InsertComponent {
 			return
 		}
 
-		this.isLoading = true
+		this.loadingService.setLoading(true)
 
 		const data: NoteBody = this.form.value
 
@@ -52,14 +53,14 @@ export class InsertComponent {
 
 		this.noteService.create(body).subscribe({
 			next: (response) => {
-				this.isLoading = false
+				this.loadingService.setLoading(false)
 
 				this.toastr.success(response.message)
 
 				this.form.reset()
 			},
 			error: (error) => {
-				this.isLoading = false
+				this.loadingService.setLoading(false)
 
 				console.log(error)
 				this.toastr.error('Ocurrió un error al crear la nota')

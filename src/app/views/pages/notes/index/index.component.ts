@@ -3,8 +3,8 @@ import { ToastrService } from 'ngx-toastr'
 import { NoteService } from 'src/app/api/note/note.service'
 import { Note } from 'src/app/models/note/note'
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2'
-import { Router } from '@angular/router'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { LoadingService } from 'src/app/services/loading.service'
 
 @Component({
 	selector: 'app-index',
@@ -23,7 +23,7 @@ export class IndexComponent implements OnInit {
 	constructor(
 		private noteService: NoteService,
 		private toastr: ToastrService,
-		private router: Router
+		private loadingService: LoadingService
 	) {}
 
 	ngOnInit() {
@@ -69,26 +69,37 @@ export class IndexComponent implements OnInit {
 	}
 
 	favoriteNote(id: string) {
+		this.loadingService.setLoading(true)
+
 		this.noteService.favorite(id).subscribe({
 			next: (response) => {
-				this.isLoading = false
+				this.loadingService.setLoading(false)
 
 				this.toastr.success(response.message)
 				this.getNotes()
+			},
+			error: (error) => {
+				this.loadingService.setLoading(false)
+
+				console.log(error)
 			}
 		})
 	}
 
 	confirmDelete() {
+		this.loadingService.setLoading(true)
+
 		this.noteService.delete(this.idNoteAction).subscribe({
 			next: (response) => {
 				this.isLoading = false
+				this.loadingService.setLoading(false)
 
 				this.toastr.success(response.message)
 				this.getNotes()
 			},
 			error: (error) => {
 				this.isLoading = false
+				this.loadingService.setLoading(false)
 
 				console.log(error)
 			}

@@ -12,10 +12,9 @@
 	<p class="text-gray-300">{{ note.description }}</p>
 	<div class="mt-4 relative w-full">
 		<pre class="pre-highlight"><code [highlight]="note.code"></code></pre>
-		<button type="button" class="absolute top-2 right-4 z-10" (click)="copyCode()">
-			<fa-icon [icon]="faCopy" class="text-gray-400"></fa-icon>
+		<button type="button" class="absolute top-2 right-4 z-10" (click)="copyCode()" [ngClass]="{'text-gray-400': !showCopied, 'text-emerald-400': showCopied}" [disabled]="showCopied">
+			<fa-icon [icon]="faCopy"></fa-icon>
 		</button>
-		<!-- alert copied success -->
 		<span class="absolute top-2 left-1/2 -translate-x-1/2 z-10 text-gray-100 bg-emerald-800 px-3 py-1 rounded-full animate-copied" [ngClass]="{'block': showCopied, 'hidden': !showCopied}">
 			<fa-icon [icon]="faCheckCircle"></fa-icon> Copiado
 		</span>

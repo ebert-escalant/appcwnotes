@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr'
 import { NoteService } from 'src/app/api/note/note.service'
 import { Note, NoteBody } from 'src/app/models/note/note'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { LoadingService } from 'src/app/services/loading.service'
 
 @Component({
 	selector: 'app-edit',
@@ -22,7 +23,8 @@ export class EditComponent implements OnInit{
 		private formBuilder: FormBuilder,
 		private noteService: NoteService,
 		private toastr: ToastrService,
-		private route: ActivatedRoute
+		private route: ActivatedRoute,
+		private loadingService: LoadingService
 	) {
 		this.form = this.formBuilder.group({
 			title: ['', [Validators.required, Validators.maxLength(255)]],
@@ -73,7 +75,7 @@ export class EditComponent implements OnInit{
 			return
 		}
 
-		this.isLoading = true
+		this.loadingService.setLoading(true)
 
 		const data: NoteBody = this.form.value
 
@@ -86,14 +88,14 @@ export class EditComponent implements OnInit{
 
 		this.noteService.update(this.idNote, body).subscribe({
 			next: (response) => {
-				this.isLoading = false
+				this.loadingService.setLoading(false)
 
 				this.toastr.success(response.message)
 
 				this.getNote()
 			},
 			error: (error) => {
-				this.isLoading = false
+				this.loadingService.setLoading(false)
 
 				console.log(error)
 				this.toastr.error('Ocurrió un error al crear la nota')

@@ -44,6 +44,7 @@ export class NoteCardComponent {
 	}
 
 	show(id: string) {
+		this.showTools = false
 		this.showNote.emit(id)
 	}
 }

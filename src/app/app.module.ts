@@ -12,6 +12,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2'
 
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs'
+import { SharedModule } from './shared/shared.module'
 
 @NgModule({
 	declarations: [
@@ -24,6 +25,7 @@ import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs'
 		HttpClientModule,
 		LayoutModule,
 		FontAwesomeModule,
+		SharedModule,
 		ToastrModule.forRoot({
 			timeOut: 5000,
 			positionClass: 'toast-top-right',
