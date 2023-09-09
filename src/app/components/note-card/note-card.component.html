@@ -17,10 +17,16 @@
 				</button>
 				<ul class="absolute bottom-5 right-2 w-24 bg-gray-700 rounded overflow-hidden" [ngClass]="{'block': showTools, 'hidden': !showTools}">
 					<li>
-						<button type="button" class="cursor-pointer px-2 py-1 hover:bg-gray-600 w-full text-left" (click)="edit(note.id)">
+						<a [routerLink]="['/notes/show', note.id]" class="cursor-pointer block px-2 py-1 hover:bg-gray-600 w-full text-left">
+							<fa-icon [icon]="faEye" class="mr-1" size="xs"></fa-icon>
+							Ver
+						</a>
+					</li>
+					<li>
+						<a [routerLink]="['/notes/edit', note.id]" class="cursor-pointer block px-2 py-1 hover:bg-gray-600 w-full text-left">
 							<fa-icon [icon]="faEdit" class="mr-1" size="xs"></fa-icon>
 							Editar
-						</button>
+						</a>
 					</li>
 					<li>
 						<button type="button" class="cursor-pointer px-2 py-1 hover:bg-gray-600 w-full text-left" (click)="delete(note.id)">

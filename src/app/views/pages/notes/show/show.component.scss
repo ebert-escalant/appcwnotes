@@ -1,0 +1,22 @@
+.pre-highlight {
+	@apply rounded overflow-hidden;
+	code {
+		@apply scrollbar-thumb-slate-500 scrollbar-thin scrollbar-track-slate-600 pt-10;
+		max-height: 30rem;
+		overflow: auto;
+	}
+}
+
+.animate-copied {
+	animation: fade-out 4s forwards;
+}
+
+@keyframes fade-out {
+	100% {
+		opacity: 0;
+		display: none;
+	}
+	50% {
+		opacity: 1;
+	}
+}

@@ -1,0 +1,23 @@
+<div class="mb-4">
+	<a class="text-gray-400 hover:text-gray-100 text-lg" [routerLink]="['/notes']">
+		<fa-icon [icon]="faArrowLeft"></fa-icon> Volver
+	</a>
+</div>
+<div class="w-full" *ngIf="note">
+	<h1 class="text-2xl font-bold text-gray-400">{{ note.title }}</h1>
+	<div class="mt-1 flex items-center" *ngIf="note.language">
+		<span class="py-1 text-xs leading-none border border-purple-900 uppercase bg-opacity-50 font-normal px-2 rounded-lg bg-purple-800">{{ note.language }}</span>
+	</div>
+	<hr class="border border-gray-800 my-3">
+	<p class="text-gray-300">{{ note.description }}</p>
+	<div class="mt-4 relative w-full">
+		<pre class="pre-highlight"><code [highlight]="note.code"></code></pre>
+		<button type="button" class="absolute top-2 right-4 z-10" (click)="copyCode()">
+			<fa-icon [icon]="faCopy" class="text-gray-400"></fa-icon>
+		</button>
+		<!-- alert copied success -->
+		<span class="absolute top-2 left-1/2 -translate-x-1/2 z-10 text-gray-100 bg-emerald-800 px-3 py-1 rounded-full animate-copied" [ngClass]="{'block': showCopied, 'hidden': !showCopied}">
+			<fa-icon [icon]="faCheckCircle"></fa-icon> Copiado
+		</span>
+	</div>
+</div>

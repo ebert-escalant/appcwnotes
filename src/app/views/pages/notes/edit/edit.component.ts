@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router'
 import { ToastrService } from 'ngx-toastr'
 import { NoteService } from 'src/app/api/note/note.service'
 import { Note, NoteBody } from 'src/app/models/note/note'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
 	selector: 'app-edit',
@@ -15,6 +16,7 @@ export class EditComponent implements OnInit{
 	isLoading = true
 	idNote!: string
 	note!: Note
+	faArrowLeft = faArrowLeft
 
 	constructor(
 		private formBuilder: FormBuilder,

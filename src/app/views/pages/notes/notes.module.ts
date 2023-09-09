@@ -8,6 +8,9 @@ import { NoteCardComponent } from 'src/app/components/note-card/note-card.compon
 import { EditComponent } from './edit/edit.component'
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+import { ShowComponent } from './show/show.component'
+import { HighlightModule } from 'ngx-highlightjs'
+import { ClipboardModule } from '@angular/cdk/clipboard'
 
 const routes: Routes = [
 	{
@@ -21,6 +24,10 @@ const routes: Routes = [
 	{
 		path: 'edit/:id',
 		component: EditComponent
+	},
+	{
+		path: 'show/:id',
+		component: ShowComponent
 	}
 ]
 
@@ -28,7 +35,8 @@ const routes: Routes = [
 	declarations: [
 		IndexComponent,
 		InsertComponent,
-		EditComponent
+		EditComponent,
+		ShowComponent
 	],
 	imports: [
 		CommonModule,
@@ -37,7 +45,9 @@ const routes: Routes = [
 		FontAwesomeModule,
 		SweetAlert2Module,
 		RouterModule.forChild(routes),
-		NoteCardComponent
+		NoteCardComponent,
+		HighlightModule,
+		ClipboardModule
 	]
 })
 export class NotesModule { }

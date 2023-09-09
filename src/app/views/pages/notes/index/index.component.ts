@@ -68,10 +68,6 @@ export class IndexComponent implements OnInit {
 		this.deleteNoteSwal.fire()
 	}
 
-	editNote(id: string) {
-		this.router.navigate(['/notes/edit', id])
-	}
-
 	favoriteNote(id: string) {
 		this.noteService.favorite(id).subscribe({
 			next: (response) => {

@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { ToastrService } from 'ngx-toastr'
 import { NoteService } from 'src/app/api/note/note.service'
 import { NoteBody } from 'src/app/models/note/note'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
 	selector: 'app-insert',
@@ -12,6 +13,7 @@ import { NoteBody } from 'src/app/models/note/note'
 export class InsertComponent {
 	form!: FormGroup
 	isLoading = false
+	faArrowLeft = faArrowLeft
 
 	constructor(
 		private formBuilder: FormBuilder,

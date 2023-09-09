@@ -1,6 +1,7 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+@import 'highlight.js/styles/tokyo-night-dark.css';
 
 input, textarea, select {
 	@apply focus:outline-none focus:ring-0 focus:outline-none focus:ring-0 #{!important};
